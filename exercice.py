@@ -3,33 +3,75 @@
 
 
 def order(values: list = None) -> list:
+    pass
     if values is None:
         # TODO: demander les valeurs ici
-        pass
+        values=[]
+        while len(values)<10:
+            values.append(input("Entrez une valeur : "))
+        values.sort()
 
-    return []
+    return print(values)
 
 
 def anagrams(words: list = None) -> bool:
+
     if words is None:
         # TODO: demander les mots ici
-        pass
+        is_anagram = True
+        words = []
+        a = str(input("Entrez un mot"))
+        words.append(a)
+        b = str(input("Entrez un deuxième mot"))
+        words.append(b)
+        if len(words[0]) != len(words[1]) :
+            is_anagram = False
 
-    return False
+        for lettres in words[0] :
+            if lettres not in words[1] :
+                is_anagram = False
+                break
+            else:
+                is_anagram = True
+
+    return print(is_anagram)
 
 
 def contains_doubles(items: list) -> bool:
-    return False
+    count = 0
+    contient_doublons = True
+    for elements in items :
+        for i in range(len(items)) :
+            if elements == items[i]:
+                count+=1
+    if count==1 :
+        contient_doublons = False
+
+
+    return contient_doublons
 
 
 def best_grades(student_grades: dict) -> dict:
     # TODO: Retourner un dictionnaire contenant le nom de l'étudiant ayant la meilleure moyenne ainsi que sa moyenne
+    best_student = dict()
+    for key,value in student_grades.items():
+        average = sum(value)/len(value)
+
+        if len(best_student) == 0 or list(best_student.values())[0]<average:
+            best_student = {key: average}
+
     return {}
 
 
 def frequence(sentence: str) -> dict:
     # TODO: Afficher les lettres les plus fréquentes
     #       Retourner le tableau de lettres
+    frequence = {letter : sentence.count(letter) for letter in sentence}
+    sorted_keys = sorted(frequence, reverse = True, key=frequence.__class_getitem__())
+    for key in sorted_keys :
+        if frequence[key]>5 :
+            print(f"Le caracte)
+
 
     return {}
 
